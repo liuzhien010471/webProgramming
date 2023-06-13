@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--jQueryUI-->
+    <link rel="stylesheet" href="./_js/jquery-ui.css">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="./_js/Bootstrap/css/bootstrap.min.css"> 
+
+    <script src="./_js/jquery.min.js"></script>
+    <script src="./_js/jquery-ui.js"></script>
+    <script src="./_js/Bootstrap/js/bootstrap.js"></script>
+
+    <style>
+        div{
+            margin: 0;
+            padding: 0;
+            transform: translate(50px,0px);
+            scale: 0.7;
+            
+        }
+        img{
+            position: absolute;
+            pointer-events: visiblePainted;
+        }
+        img:hover{
+            filter: brightness(135%) hue-rotate(0deg);
+        }
+        #newTai{
+            transform: translate(300px,0px);
+        }
+        #Keelung{
+            transform: translate(455px,53px);
+        }
+        #Taipei{
+            transform: translate(365px,50px);
+        }
+        #taoyuan{
+            transform: translate(168px,77px);
+        }
+        #Hsinchu {
+            transform: translate(125px,158px);
+        }
+        #HsinchuC {
+            transform: translate(124px,208px);
+        }
+        #Miaoli {
+            transform: translate(27px,256px);
+        }
+        #Taichung {
+            transform: translate(-20px,366px);
+        }
+
+        #Nantou  {
+            transform: translate(35px,459px);
+        }
+        #Changhua {
+            transform: translate(-108px,486px);
+        }
+        #Yunlin {
+            transform: translate(-152px,638px);
+        }
+        #Chiayi {
+            transform: translate(-153px,709px);
+        }
+        #ChiayiC {
+            transform: translate(-53px,750px);
+        }
+        #Tainan {
+            transform: translate(-165px,804px);
+        }
+        #Kaohsiung {
+            transform: translate(-113px,772px);
+        }
+        #Pingtung  {
+            transform: translate(0px,1013px);
+        }
+        #Yilan {
+            transform: translate(312px,126px);
+        }
+        #Hualien {
+            transform: translate(216px,391px);
+        }
+        #Taitung {
+            transform: translate(142px,754px);
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="./map/宜蘭.svg" alt="" width="277px" id="Yilan">
+        <img src="./map/新北.svg" alt="" width="300px" id="newTai">
+        <img src="./map/高雄.svg" alt="" width="360px" id="Kaohsiung">
+        <img src="./map/台北.svg" alt="" width="70px" id="Taipei">
+        <img src="./map/基隆.svg" alt="" width="70px" id="Keelung">
+        <img src="./map/桃園.svg" alt="" width="215px" id="taoyuan">
+        <img src="./map/新竹.svg" alt="" width="233px" id="Hsinchu">
+        <img src="./map/新竹市.svg" alt="" width="70px" id="HsinchuC">
+        <img src="./map/苗栗.svg" alt="" width="271px" id="Miaoli">
+        <img src="./map/台中.svg" alt="" width="392px" id="Taichung">
+        <img src="./map/南投.svg" alt="" width="300px" id="Nantou">
+        <img src="./map/彰化.svg" alt="" width="182px" id="Changhua">
+        <img src="./map/雲林.svg" alt="" width="255px" id="Yunlin">
+        <img src="./map/嘉義.svg" alt="" width="339px" id="Chiayi">
+        <img src="./map/嘉義市.svg" alt="" width="65px" id="ChiayiC">
+        <img src="./map/台南.svg" alt="" width="240px" id="Tainan">
+        <img src="./map/屏東.svg" alt="" width="236px" id="Pingtung">
+        <img src="./map/台東.svg" alt="" width="294px" id="Taitung">
+        <img src="./map/花蓮.svg" alt="" width="303px" id="Hualien">
+        
+    </div>
+    
+    <script>
+        $("img").click(function(){
+            
+            var message = $(this).attr('id');
+            window.parent.postMessage(message, "*");
+        });
+    </script>
+</body>
+</html>

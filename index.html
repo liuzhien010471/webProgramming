@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣行政區劃總覽</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+
+    </style>
+
+
+    <!--jQueryUI-->
+    <link rel="stylesheet" href="./_js/jquery-ui.css">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="./_js/Bootstrap/css/bootstrap.min.css"> 
+
+    <script src="./_js/jquery.min.js"></script>
+    <script src="./_js/jquery-ui.js"></script>
+    <script src="./_js/Bootstrap/js/bootstrap.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $( "#tabs" ).tabs();
+
+            window.addEventListener("message", receiveMessage, false);
+
+            //分頁透過select選擇縣市
+            $("select").change(function(){
+                message = $(this).val();
+                console.log("lll");
+                north(message,"page");
+                middle(message,"page");
+                south(message,"page");
+                east(message,"page");
+            });
+        });
+
+        
+
+        function receiveMessage(event) {
+
+            //接收map訊息
+            var message = event.data;
+
+            var $information = "";
+            north(message,"all");
+            middle(message,"all");
+            south(message,"all");
+            east(message,"all");
+
+        }
+
+        
+
+        //負責處理北部縣市資訊
+        function north(location,page){
+            if(location == "newTai"){
+                if(page == "all"){//將總覽文字修改
+                    $("#north_name_all").text("新北市");
+                    $("#north_infor_all").text("新北市為直轄市，劃分為二十九區其中一區烏來區為原住民區，本市特色為西北部、北部、東部環海，擁有豐富的海景奇觀及海岸風光，南部則為中央山脈北端雪山山脈的支稜，山多溪谷多，全台最大簾幕瀑布十分瀑布也位於此。");
+                    $("#north_img_all").attr("src","./img/05.jpg");
+                }else if(page == "page"){//將北部分頁文字修改，與上方內容相同
+                    $("#north_name_north").text("新北市");
+                    $("#north_infor_north").text("新北市為直轄市，劃分為二十九區其中一區烏來區為原住民區，本市特色為西北部、北部、東部環海，擁有豐富的海景奇觀及海岸風光，南部則為中央山脈北端雪山山脈的支稜，山多溪谷多，全台最大簾幕瀑布十分瀑布也位於此。");
+                    $("#north_img_north").attr("src","./img/05.jpg");
+                }
+            }else if(location == "Keelung"){
+                if(page == "all"){
+                    $("#north_name_all").text("基隆市");
+                    $("#north_infor_all").text("基隆市為省轄市，全市分為七個區，乃臺灣最北端的都市，因氣候多雨別稱:雨都，冬季受東北季風經過海洋及因背山面海的原因造成潮濕多雨，夏季受西南季風要越過山嶺才能到達之因，冬雨多於夏雨。");
+                    $("#north_img_all").attr("src","./img/06.jpg");
+                }else if(page == "page"){
+                    $("#north_name_north").text("基隆市");
+                    $("#north_infor_north").text("基隆市為省轄市，全市分為七個區，乃臺灣最北端的都市，因氣候多雨別稱:雨都，冬季受東北季風經過海洋及因背山面海的原因造成潮濕多雨，夏季受西南季風要越過山嶺才能到達之因，冬雨多於夏雨。");
+                    $("#north_img_north").attr("src","./img/06.jpg");
+                }
+            }else if(location == "Taipei"){
+                if(page == "all"){
+                    $("#north_name_all").text("台北市");
+                    $("#north_infor_all").text("台北市為直轄市也為台灣之首都，分為十二個區，人口密度則是台灣最高，台北市也擁有台灣最高建築物台北101，樓高509.2公尺，而台灣第一個公共自行車系統YouBike就是從台北市先發行的。");
+                    $("#north_img_all").attr("src","./img/04.jpg");
+                }else if(page == "page"){
+                    $("#north_name_north").text("台北市");
+                    $("#north_infor_north").text("台北市為直轄市也為台灣之首都，分為十二個區，人口密度則是台灣最高，台北市也擁有台灣最高建築物台北101，樓高509.2公尺，而台灣第一個公共自行車系統YouBike就是從台北市先發行的。");
+                    $("#north_img_north").attr("src","./img/04.jpg");
+                }
+            }else if(location == "taoyuan"){
+                if(page == "all"){
+                    $("#north_name_all").text("桃園市");
+                    $("#north_infor_all").text("桃園市為直轄市，分為十三區，其中一區為原住民區，桃園市有台灣第一個國際機場桃園國際機場，於1979年啟用。它取代了台北松山機場成為台灣的主要國際航空樞紐。");
+                    $("#north_img_all").attr("src","./img/07.jpg");
+                }else if(page == "page"){
+                    $("#north_name_north").text("桃園市");
+                    $("#north_infor_north").text("桃園市為直轄市，分為十三區，其中一區為原住民區，桃園市有台灣第一個國際機場桃園國際機場，於1979年啟用。它取代了台北松山機場成為台灣的主要國際航空樞紐。");
+                    $("#north_img_north").attr("src","./img/07.jpg");
+                }
+            }else if(location == "Hsinchu"){
+                if(page == "all"){
+                    $("#north_name_all").text("新竹縣");
+                    $("#north_infor_all").text("新竹縣的縣市是竹北市，分為一市、三鎮、九鄉。新竹縣的光電產業在台灣乃至全球光電市場中佔有相當的比重，並且在光通訊、顯示技術和太陽能等領域有著重要的突破和發展。");
+                    $("#north_img_all").attr("src","./img/09.jpg");
+                }else if(page == "page"){
+                    $("#north_name_north").text("新竹縣");
+                    $("#north_infor_north").text("新竹縣的縣市是竹北市，分為一市、三鎮、九鄉。新竹縣的光電產業在台灣乃至全球光電市場中佔有相當的比重，並且在光通訊、顯示技術和太陽能等領域有著重要的突破和發展。");
+                    $("#north_img_north").attr("src","./img/09.jpg");
+                }
+            }else if(location == "HsinchuC"){
+                if(page == "all"){
+                    $("#north_name_all").text("新竹市");
+                    $("#north_infor_all").text("新竹市為省轄市，且分為三區，新竹市的新竹科學工業園區是台灣第一個科學園區，成立於1980年。它是台灣高科技產業的搖籃，吸引了眾多國內外科技企業和研發機構進駐，對台灣的科技發展做出了重要貢獻。");
+                    $("#north_img_all").attr("src","./img/08.jpg");
+                }else if(page == "page"){
+                    $("#north_name_north").text("新竹市");
+                    $("#north_infor_north").text("新竹市為省轄市，且分為三區，新竹市的新竹科學工業園區是台灣第一個科學園區，成立於1980年。它是台灣高科技產業的搖籃，吸引了眾多國內外科技企業和研發機構進駐，對台灣的科技發展做出了重要貢獻。");
+                    $("#north_img_north").attr("src","./img/08.jpg");
+                }
+            }else if(location == "Yilan"){
+                if(page == "all"){
+                    $("#north_name_all").text("宜蘭縣");
+                    $("#north_infor_all").text("宜蘭縣的縣市為宜蘭市，設有一市、三鎮、八鄉，其中有兩鄉為原住民區，宜蘭縣擁有台灣第一個冷泉區，即宜蘭冷泉。宜蘭冷泉區位於羅東鎮，以其天然的溫泉水質和療癒效果而聞名。");
+                    $("#north_img_all").attr("src","./img/11.jpg");
+                }else if(page == "page"){
+                    $("#north_name_north").text("宜蘭縣");
+                    $("#north_infor_north").text("宜蘭縣的縣市為宜蘭市，設有一市、三鎮、八鄉，其中有兩鄉為原住民區，宜蘭縣擁有台灣第一個冷泉區，即宜蘭冷泉。宜蘭冷泉區位於羅東鎮，以其天然的溫泉水質和療癒效果而聞名。");
+                    $("#north_img_north").attr("src","./img/11.jpg");
+                }
+            }
+        }
+
+        function middle(location,page){
+            if(location == "Miaoli"){
+                if(page == "all"){
+                    $("#north_name_all").text("苗栗縣");
+                    $("#north_infor_all").text("苗栗縣縣市位於苗栗市，苗栗縣內轄有2市、5鎮、11鄉，其中一鄉為原住民區，苗栗縣是台灣客家人口密集的地區之一，擁有豐富的客家文化資源。苗栗的客家文化體現在建築、音樂、文學、飲食和傳統藝術等方面。");
+                    $("#north_img_all").attr("src","./img/10.jpg");
+                }else if(page == "page"){
+                    $("#north_name_middle").text("苗栗縣");
+                    $("#north_infor_middle").text("苗栗縣縣市位於苗栗市，苗栗縣內轄有2市、5鎮、11鄉，其中一鄉為原住民區，苗栗縣是台灣客家人口密集的地區之一，擁有豐富的客家文化資源。苗栗的客家文化體現在建築、音樂、文學、飲食和傳統藝術等方面。");
+                    $("#north_img_middle").attr("src","./img/10.jpg");
+                }
+            }else if(location == "Taichung"){
+                if(page == "all"){
+                    $("#north_name_all").text("台中市");
+                    $("#north_infor_all").text("台中市為直轄市，分為二十九區，其中一區為原住民區，台中市的中港都會公園是台灣第一個以都市綠地和生態環境為主題的都會公園。這座公園以其廣闊的綠地、藝術裝置和生態池塘等特色而受到民眾喜愛。");
+                    $("#north_img_all").attr("src","./img/12.jpg");
+                }else if(page == "page"){
+                    $("#north_name_middle").text("台中市");
+                    $("#north_infor_middle").text("台中市為直轄市，分為二十九區，其中一區為原住民區，台中市的中港都會公園是台灣第一個以都市綠地和生態環境為主題的都會公園。這座公園以其廣闊的綠地、藝術裝置和生態池塘等特色而受到民眾喜愛。");
+                    $("#north_img_middle").attr("src","./img/12.jpg");
+                }
+            }else if(location == "Nantou"){
+                if(page == "all"){
+                    $("#north_name_all").text("南投縣");
+                    $("#north_infor_all").text("南投縣縣鎮設於南投鎮，轄5鎮、8鄉，南投縣日月潭是台灣面積最大且海拔最高的天然湖泊。日月潭位於南投縣，面積約7.93平方公里，海拔約760公尺。優美的湖光山色、湖畔的風景和多樣的旅遊活動使其成為南投縣最具代表性的地標之一。");
+                    $("#north_img_all").attr("src","./img/13.jpg");
+                }else if(page == "page"){
+                    $("#north_name_middle").text("南投縣");
+                    $("#north_infor_middle").text("南投縣縣鎮設於南投鎮，轄5鎮、8鄉，南投縣日月潭是台灣面積最大且海拔最高的天然湖泊。日月潭位於南投縣，面積約7.93平方公里，海拔約760公尺。優美的湖光山色、湖畔的風景和多樣的旅遊活動使其成為南投縣最具代表性的地標之一。");
+                    $("#north_img_middle").attr("src","./img/13.jpg");
+                }
+            }else if(location == "Changhua"){
+                if(page == "all"){
+                    $("#north_name_all").text("彰化縣");
+                    $("#north_infor_all").text("彰化縣員林市為縣轄市，設有二市、六鎮、十八鄉，彰化縣是台灣重要的花卉種植區之一，尤其以郵筒花聞名。彰化的花卉產業在台灣的發展中扮演了重要角色，並在花卉展覽和觀光方面有著獨特的地位。");
+                    $("#north_img_all").attr("src","./img/14.jpg");
+                }else if(page == "page"){
+                    $("#north_name_middle").text("彰化縣");
+                    $("#north_infor_middle").text("彰化縣員林市為縣轄市，設有二市、六鎮、十八鄉，彰化縣是台灣重要的花卉種植區之一，尤其以郵筒花聞名。彰化的花卉產業在台灣的發展中扮演了重要角色，並在花卉展覽和觀光方面有著獨特的地位。");
+                    $("#north_img_middle").attr("src","./img/14.jpg");
+                }
+            }else if(location == "Yunlin"){
+                if(page == "all"){
+                    $("#north_name_all").text("雲林縣");
+                    $("#north_infor_all").text("雲林縣縣市為斗六市，設有一市、五鎮、十六鄉，雲林縣以其豐富的農產資源而聞名，特別是蔬果產業。雲林是台灣重要的農業區域之一，生產大量的水果、蔬菜和花卉，其中以蓮霧、番石榴和鳳梨等品種為特色。");
+                    $("#north_img_all").attr("src","./img/15.jpg");
+                }else if(page == "page"){
+                    $("#north_name_middle").text("雲林縣");
+                    $("#north_infor_middle").text("雲林縣縣市為斗六市，設有一市、五鎮、十六鄉，雲林縣以其豐富的農產資源而聞名，特別是蔬果產業。雲林是台灣重要的農業區域之一，生產大量的水果、蔬菜和花卉，其中以蓮霧、番石榴和鳳梨等品種為特色。");
+                    $("#north_img_middle").attr("src","./img/15.jpg");
+                }
+            }
+        }
+
+        function south(location,page){
+            if(location == "Chiayi"){
+                if(page == "all"){
+                    $("#north_name_all").text("嘉義縣");
+                    $("#north_infor_all").text("嘉義縣的縣市為太保市，縣內轄有2市、2鎮、14鄉（含1個山地鄉），共有18個鄉鎮市，其中台灣最大的水庫與湖泊—曾文水庫，則位於嘉義縣大埔鄉。");
+                    $("#north_img_all").attr("src","./img/16.jpg");
+                }else if(page == "page"){
+                    $("#north_name_south").text("嘉義縣");
+                    $("#north_infor_south").text("嘉義縣的縣市為太保市，縣內轄有2市、2鎮、14鄉（含1個山地鄉），共有18個鄉鎮市，其中台灣最大的水庫與湖泊—曾文水庫，則位於嘉義縣大埔鄉。");
+                    $("#north_img_south").attr("src","./img/16.jpg");
+                }
+            }else if(location == "ChiayiC"){
+                if(page == "all"){
+                    $("#north_name_all").text("嘉義市");
+                    $("#north_infor_all").text("嘉義市為省轄市，市內分東、西二區，人口約有26萬人。嘉義市是全國第一個、亦為唯一市區公車全面電動化、低底盤化的城市。");
+                    $("#north_img_all").attr("src","./img/17.jpg");
+                }else if(page == "page"){
+                    $("#north_name_south").text("嘉義市");
+                    $("#north_infor_south").text("嘉義市為省轄市，市內分東、西二區，人口約有26萬人。嘉義市是全國第一個、亦為唯一市區公車全面電動化、低底盤化的城市。");
+                    $("#north_img_south").attr("src","./img/17.jpg");
+                }
+            }else if(location == "Tainan"){
+                if(page == "all"){
+                    $("#north_name_all").text("台南市");
+                    $("#north_infor_all").text("台南市為直轄市，台南市共37區，人口約186萬人，其中又可以分為新營地區、北門地區、曾文地區、府城地區、新豐地區、以及新化地區。台南市擁有很多全國記錄，包括平原區比例最大、地形最平緩、農耕地面積最大、公路道路最多等等。 ");
+                    $("#north_img_all").attr("src","./img/18.jpg");
+                }else if(page == "page"){
+                    $("#north_name_south").text("台南市");
+                    $("#north_infor_south").text("台南市為直轄市，台南市共37區，人口約186萬人，其中又可以分為新營地區、北門地區、曾文地區、府城地區、新豐地區、以及新化地區。台南市擁有很多全國記錄，包括平原區比例最大、地形最平緩、農耕地面積最大、公路道路最多等等。 ");
+                    $("#north_img_south").attr("src","./img/18.jpg");
+                }
+            }else if(location == "Kaohsiung"){
+                if(page == "all"){
+                    $("#north_name_all").text("高雄市");
+                    $("#north_infor_all").text("高雄市為直轄市，共轄38區，人口約273萬人。高雄市擁有台灣第一大港—高雄港，故此也有「港都」之稱。高雄市為台灣西部面積最大的市，及南台灣第一大城、台灣第三大都市，及擁有南台灣唯一的國際機場—高雄國際機場。");
+                    $("#north_img_all").attr("src","./img/19.jpg");
+                }else if(page == "page"){
+                    $("#north_name_south").text("高雄市");
+                    $("#north_infor_south").text("高雄市為直轄市，共轄38區，人口約273萬人。高雄市擁有台灣第一大港—高雄港，故此也有「港都」之稱。高雄市為台灣西部面積最大的市，及南台灣第一大城、台灣第三大都市，及擁有南台灣唯一的國際機場—高雄國際機場。");
+                    $("#north_img_south").attr("src","./img/19.jpg");
+                }
+            }else if(location == "Pingtung"){
+                if(page == "all"){
+                    $("#north_name_all").text("屏東縣");
+                    $("#north_infor_all").text("屏東縣的縣市為屏東市，縣內轄有1市、3鎮、29鄉（含8山地鄉），共有33個鄉鎮市，人口約有80萬人。屏東縣是台灣西部南北最狹長的縣份，傳統產業結構上偏重農、漁業，但近年觀光產業逐漸興盛發展。");
+                    $("#north_img_all").attr("src","./img/20.jpg");
+                }else if(page == "page"){
+                    $("#north_name_south").text("屏東縣");
+                    $("#north_infor_south").text("屏東縣的縣市為屏東市，縣內轄有1市、3鎮、29鄉（含8山地鄉），共有33個鄉鎮市，人口約有80萬人。屏東縣是台灣西部南北最狹長的縣份，傳統產業結構上偏重農、漁業，但近年觀光產業逐漸興盛發展。");
+                    $("#north_img_south").attr("src","./img/20.jpg");
+                }
+            }
+        }
+
+        function east(location,page){
+            if(location == "Hualien"){
+                if(page == "all"){
+                    $("#north_name_all").text("花蓮縣");
+                    $("#north_infor_all").text("花蓮縣的縣市為花蓮市，縣內轄有1市、2鎮、10鄉（含3山地鄉），共有13個鄉鎮市，人口約有32萬人。花蓮縣總面積為4628平方公里，是台灣面積最大的縣級行政區。花蓮縣有「台灣後花園」的美譽，縣內有太魯閣國家公園、玉山國家公園。花蓮縣亦是台灣原住民族最多的區域，當中又以阿美族分布最廣。");
+                    $("#north_img_all").attr("src","./img/21.jpg");
+                }else if(page == "page"){
+                    $("#north_name_east").text("花蓮縣");
+                    $("#north_infor_east").text("花蓮縣的縣市為花蓮市，縣內轄有1市、2鎮、10鄉（含3山地鄉），共有13個鄉鎮市，人口約有32萬人。花蓮縣總面積為4628平方公里，是台灣面積最大的縣級行政區。花蓮縣有「台灣後花園」的美譽，縣內有太魯閣國家公園、玉山國家公園。花蓮縣亦是台灣原住民族最多的區域，當中又以阿美族分布最廣。");
+                    $("#north_img_east").attr("src","./img/21.jpg");
+                }
+            }else if(location == "Taitung"){
+                if(page == "all"){
+                    $("#north_name_all").text("台東縣");
+                    $("#north_infor_all").text("台東縣的縣市為台東市，縣內轄有1市、2鎮、13鄉（含5山地鄉），共有16個鄉鎮市，人口約有21萬人。台東縣是全台灣第三大縣，其自然資源相當豐富，縣內亦有多處自然文化保留區。");
+                    $("#north_img_all").attr("src","./img/22.jpg");
+                }else if(page == "page"){
+                    $("#north_name_east").text("台東縣");
+                    $("#north_infor_east").text("台東縣的縣市為台東市，縣內轄有1市、2鎮、13鄉（含5山地鄉），共有16個鄉鎮市，人口約有21萬人。台東縣是全台灣第三大縣，其自然資源相當豐富，縣內亦有多處自然文化保留區。");
+                    $("#north_img_east").attr("src","./img/22.jpg");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div id="title">
+        <img src="./icon/logo1.png" alt="" width="50px">
+        <h1>台灣行政區域導覽<h1>
+    </div>
+    
+    <main>
+        <!--slide-->
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/01.jpg" class="d-block w-100" alt="..." height="400px">
+            </div>
+            <div class="carousel-item">
+                <img src="./img/03.jpg" class="d-block w-100" alt="..." height="400px">
+            </div>
+            <div class="carousel-item">
+                <img src="./img/04.jpg" class="d-block w-100" alt="..." height="400px">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div id="tabs">
+            <ul id="private_header">
+                <li id="private_header_li"><a href="#tab-1">台灣總覽</a></li>
+                <li id="private_header_li"><a href="#tab-2">北部</a></li>
+                <li id="private_header_li"><a href="#tab-3">中部</a></li>
+                <li id="private_header_li"><a href="#tab-4">南部</a></li>
+                <li id="private_header_li"><a href="#tab-5">東部</a></li>
+                <li id="private_header_li"><a href="#tab-6">小組成員</a></li>
+            </ul>
+            <!-- 台灣總覽 -->
+            <div id="tab-1">
+                <!-- 地圖 -->
+                <div class="map_con">
+                    <iframe src="./map.html" frameborder="0"></iframe>
+                </div>
+                
+                <div class="card_left">
+                    <div class="tab-font" style="border-left: 1px black solid; padding: 10px;">
+                        <!-- 預設介紹台灣 -->
+                        <h2 class="card_header" id="north_name_all">台灣</h2>
+                        <p id="north_infor_all">
+                            台灣擁有六個直轄市，分別是台北、新北、桃園、台中、台南以及高雄市，首都為台北市，但最大的城市為新北市。台灣面積約3.6萬平方公里，是世界面積第38大島嶼。台灣的最高點是玉山主峰，總共3,952公尺。人口方面，台灣約有2300萬人，分佈在島上各處。
+                        </p>
+                        <img class="card_img" src="./img/23.jpg" alt="" id="north_img_all">
+                    </div>  
+                </div>
+            </div>
+            <!-- 北部 -->
+            <div id="tab-2">
+                <div class="card_div">
+                    <div class="card_left">
+                        <div class="tab-img">
+                            <h2>選擇縣市</h2>
+                            <select style="height: 200px;width: 90%;margin-right: 10px;" size="10">
+                                <option value="newTai">新北市</option>
+                                <option value="Keelung">基隆市</option>
+                                <option value="Taipei">台北市</option>
+                                <option value="taoyuan">桃園市</option>
+                                <option value="Hsinchu">新竹縣</option>
+                                <option value="HsinchuC">新竹市</option>
+                                <option value="Yilan">宜蘭縣</option>
+                            </select>
+                        </div>
+                        <div class="tab-font2" style="border-left: 1px black solid; padding: 10px;" >
+                            <!-- 預設介紹北部 -->
+                            <h2 class="card_header" id="north_name_north">北部</h2>
+                            <p id="north_infor_north">
+                                依據行政院的劃分方式，台灣北部包括台北市、新北市、基隆市、桃園市、宜蘭縣、新竹縣及新竹市。當中人口約有1073萬人，佔總人口逾四成；而當中台北都會區為台灣人口最多的都會區，人口約688萬人，逾近總人口的三成。
+                            </p>
+                            <img class="card_img" src="./img/24.jpg" alt="" id="north_img_north">
+                        </div>  
+                    </div>
+                </div>
+           
+            </div>
+            <!-- 中部 -->
+            <div id="tab-3">
+                <div class="card_div">
+                    <div class="card_left">
+                        <div class="tab-img">
+                            <h2>選擇縣市</h2>
+                            <select style="height: 150px;width: 90%;margin-right: 10px;" size="10">
+                                <option value="Miaoli">苗栗縣</option>
+                                <option value="Taichung">台中市</option>
+                                <option value="Changhua">彰化縣</option>
+                                <option value="Yunlin">雲林縣</option>
+                                <option value="Nantou">南投縣</option>
+                            </select>
+                        </div>
+                        <div class="tab-font2" style="border-left: 1px black solid; padding: 10px;">
+                            <!-- 預設介紹中部 -->
+                            <h2 class="card_header" id="north_name_middle">中部</h2>
+                            <p id="north_infor_middle">
+                                台灣中部包括苗栗縣、台中市、彰化縣、南投縣、雲林縣，是台灣的農業重鎮、亦都是台灣中小企業與精密機械最重要的聚集地，人口約579萬人。當中台中彰化都會區是全國第二高人口的都會區，唯此統計方式已停止使用。
+                            </p>
+                            <img class="card_img" src="./img/12.jpg" alt="" id="north_img_middle">
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <!-- 南部 -->
+            <div id="tab-4">
+                <div class="card_div">
+                    <!-- 左圖右文卡 -->
+                    <div class="card_left">
+                        <div class="tab-img">
+                            <h2>選擇縣市</h2>
+                            <select style="height: 150px;width: 90%;margin-right: 10px;" size="10">
+                                <option value="Chiayi">嘉義縣</option>
+                                <option value="ChiayiC">嘉義市</option>
+                                <option value="Tainan">台南市</option>
+                                <option value="Kaohsiung">高雄市</option>
+                                <option value="Pingtung">屏東縣</option>
+                            </select>
+                        </div>
+                        <div class="tab-font2" style="border-left: 1px black solid; padding: 10px;">
+                            <!-- 預設介紹南部 -->
+                            <h2 class="card_header" id="north_name_south">南部</h2>
+                            <p id="north_infor_south">
+                                台灣南部包括嘉義縣、嘉義市、臺南市、高雄市、屏東縣及澎湖縣(不計入台灣本島)，產業發展涵蓋第一至四級產業，人口約624萬人。當中台灣最長的河—濁水溪，位於與台灣中部的交界；至於第二長的河—高屏溪，就位於台灣南部。
+                            </p>
+                            <img class="card_img" src="./img/25.jpg" alt="" id="north_img_south">
+                        </div>  
+                    </div>
+                </div>  
+            </div>
+            <!-- 東部 -->
+            <div id="tab-5">
+                <div class="card_div">
+                    <!-- 左圖右文卡 -->
+                    <div class="card_left">
+                        <div class="tab-img">
+                            <h2>選擇縣市</h2>
+                            <select style="height: 70px;width: 90%;margin-right: 10px;" size="10">
+                                <option value="Hualien">花蓮縣</option>
+                                <option value="Taitung">台東縣</option>
+                            </select>
+                        </div>
+                        <div class="tab-font2" style="border-left: 1px black solid; padding: 10px;">
+                            <!-- 預設介紹東部 -->
+                            <h2 class="card_header" id="north_name_east">東部</h2>
+                            <p id="north_infor_east">
+                                台灣東部包括花蓮縣以及台東縣，指地區東朝太平洋、是全臺灣海岸線最長的地區。台灣東部多山，故此相較西部人口密度較低，人口亦只有約53萬人。
+                            </p>
+                            <img class="card_img" src="./img/21.jpg" alt="" id="north_img_east">
+                        </div>  
+                    </div>
+                </div>  
+            </div>
+            <!-- 小組成員 -->
+            <div id="tab-6">
+                <div class="card_div">
+                    <!-- 左圖右文卡 -->
+                   <div class="card_left2">
+                       <div class="tab-img">
+                           <img class="card_img" src="./members/S__10625062.jpg" alt="" style="max-height: 350px;">
+                       </div>
+                       <div class="tab-font" style="border-left: 1px black solid; padding: 10px;">
+                           <h2 class="card_header">呂柏漢</h2>
+                           <p>
+                            喜歡旅遊、運動，也愛與人相處
+                               
+                           </p>
+                       </div>  
+                   </div>
+               </div>
+               <div class="card_div" >
+                   <!-- 右圖左文卡 -->
+                   <div class="card_right" >
+                       <div class="tab-font" style="border-right: 1px black solid; padding: 10px;">
+                           <h2 class="card_header">陳思良</h2>
+                           <p>
+                            我是來自香港的陳思良，現在是資傳系設計組的二年級生。
+                            通過期末專題，我更加了解台灣的地理、文化以及編寫程式製作網頁。
+                           </p>
+                       </div>  
+                       <div class="tab-img">
+                           <img class="card_img" src="./members/Andrew.png" alt="" style="max-height: 350px;">
+                       </div>
+                   </div>
+               </div>
+                <div class="card_div">
+                    <!-- 左圖右文卡 -->
+                   <div class="card_left2">
+                       <div class="tab-img">
+                           <img class="card_img" src="./members/S__7929862.jpg" alt="">
+                       </div>
+                       <div class="tab-font" style="border-left: 1px black solid; padding: 10px;">
+                           <h2 class="card_header">黃蓉</h2>
+                           <p>
+                            資訊傳播學系設計組三年級。<br>
+                            是一個隨和的人，平常的興趣是聽音樂、畫畫，偶爾也喜歡去看展。
+                               
+                           </p>
+                       </div>  
+                   </div>
+               </div>
+               <div class="card_div" >
+                   <!-- 右圖左文卡 -->
+                   <div class="card_right" >
+                       <div class="tab-font" style="border-right: 1px black solid; padding: 10px;">
+                           <h2 class="card_header">劉至恩</h2>
+                           <p>
+                               資傳系三年級設計組。同時具備設計以及程式能力。對於知識與各式技藝皆感興趣，喜歡摸索未知事務。<br>
+                               最近在專研樂器，諸如鋼琴、二胡以及竹笛。以及接觸各種音樂專研他們的技術與編曲。
+                           </p>
+                       </div>  
+                       <div class="tab-img">
+                           <img class="card_img" src="./members/頭貼.png" alt="">
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+      
+    </main>
+    
+</body>
+</html>
